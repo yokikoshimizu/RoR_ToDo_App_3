@@ -1,2 +1,23 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<h1>タスク詳細</h1>
+<p>
+    <strong>タスク名：</strong>
+    <%= @task.name %>
+</p>
+
+<p>
+    <strong>詳細：</strong>
+    <%= @task.description %>
+</p>
+
+<p>
+    <strong>作成日時：</strong>
+    # created_at はデフォルトで生成される日時カラム（ActiveRecord）
+    # ActiveRecordが自動で生成するカラム名は created_at（作成日時）と updated_at（更新日時）
+    # .strftime(...) は日付のフォーマット整形用メソッド
+    <%= @task.created_at.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+    <%= link_to "一覧に戻る", tasks_path %>
+    |
+    <%= link_to "編集", edit_task_path(@task) %>

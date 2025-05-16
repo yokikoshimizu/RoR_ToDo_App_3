@@ -5,6 +5,11 @@ class TasksController < ApplicationController
   end
 
   def show
+    # findメソッドを使って、詳細画面に表示するためのTaskオブジェクトを取得
+    # findはidによって、モデルオブジェクトに対応するレコードを検索する
+    # 引数としてparams[:id]（タスクのID）を渡している
+    @task = Task.find(params[:id])
+    # 見つけたIDデータをインスタンス変数@taskに代入
   end
 
   # 新しいTaskオブジェクトを生成して、インスタンス変数@taskに代入する
@@ -22,6 +27,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(task_params)
   end
 
   private
