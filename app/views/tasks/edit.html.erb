@@ -1,2 +1,24 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<h1>タスク編集</h1>
+<p>編集するならどうぞ</p>
+
+<%= form_with model: @task, local: true do |form| %>
+    <p>
+        <%# model: @task は「このフォームは @task のデータを編集・保存するものだよ」という指定（キーワード引数）
+        # ※Railsは model: に @task を渡すことで、「これは新規作成？編集？」「どこにPOST送信すればいい？」を自動で判断してくれる
+        # local: true は JavaScript を使わず普通のフォームにする指定 %>
+        <%= form.label :name, "タイトル" %><br>
+        <%= form.text_field :name %>
+    </p>
+
+    <p>
+        <%= form.label :description, "詳細" %><br>
+        <%= form.text_area :description %>
+    </p>
+
+    <p>
+        <%= form.submit "更新する" %>
+    </p>
+<% end %>
+
+<%= link_to "編集", edit_task_path(@task) %>
+<%= link_to "一覧に戻る", tasks_path %>
