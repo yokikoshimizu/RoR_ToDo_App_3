@@ -1,6 +1,6 @@
 <h1>タスク詳細</h1>
 <p>
-    <strong>タスク名：</strong>
+    <strong>タイトル：</strong>
     <%= @task.name %>
 </p>
 
@@ -11,9 +11,9 @@
 
 <p>
     <strong>作成日時：</strong>
-    # created_at はデフォルトで生成される日時カラム（ActiveRecord）
+    <%# created_at はデフォルトで生成される日時カラム（ActiveRecord）
     # ActiveRecordが自動で生成するカラム名は created_at（作成日時）と updated_at（更新日時）
-    # .strftime(...) は日付のフォーマット整形用メソッド
+    # .strftime(...) は日付のフォーマット整形用メソッド %>
     <%= @task.created_at.strftime("%Y-%m-%d %H:%M") %>
 </p>
 

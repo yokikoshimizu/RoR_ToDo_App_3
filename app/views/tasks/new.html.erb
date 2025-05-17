@@ -1,37 +1,37 @@
 <h1>タスクの新規登録</h1>
 <p>タスクを登録してください</p>
 
-#ヘルパーメソッド: form_with
+<%#ヘルパーメソッド: form_with
 #Railsのフォーム作成用ヘルパーメソッド
 #model: @task と書くことで、Railsはこのフォームが Task モデルの情報を送るためのものだと認識
-#local: true は JavaScriptを使わずに、普通のHTMLフォーム（<form>）として動作するようにする指定
+#local: true は JavaScriptを使わずに、普通のHTMLフォーム（<form>）として動作するようにする指定 %>
 <%= form_with model: @task, local: true do |form| %>
     <p>
-        #form.label :title, 'タイトル'<label> タグを生成
-        #第一引数 :title によって、「どの属性のラベルか」が自動的に結びつく
-        #第二引数 'タイトル' は、ラベルに表示する文字列
-        <%= form.label :title, 'タイトル' %><br>
-        #form.text_field :title <input type="text"> を生成
+        <%#form.label :title, 'タイトル'<label> タグを生成 %>
+        <%#第一引数 :title によって、「どの属性のラベルか」が自動的に結びつく %>
+        <%#第二引数 'タイトル' は、ラベルに表示する文字列 %>
+        <%= form.label :name, '名前' %><br>
+        <%#form.text_field :title <input type="text"> を生成
         #:title はモデルの属性名。Railsは自動的に @task.title の値をこの入力欄に表示（新規作成なので空欄。
-        #name属性・id属性なども自動生成される
-        <%= form.text_field :title %>
+        #name属性・id属性なども自動生成される %>
+        <%= form.text_field :name %>
     </p>
 
     <p>
         <%= form.label :description, '詳細' %><br>
-        #form.text_area :description 複数行の入力欄（<textarea>）を作成
-        #単一行ではなく、自由に改行できる欄が欲しいときに使用
+        <%#form.text_area :description 複数行の入力欄（<textarea>）を作成
+        #単一行ではなく、自由に改行できる欄が欲しいときに使用 %>
         <%= form.text_area :description%>
     </p>
 
     <p>
-        #form.submit '登録する' フォームを送信するための <input type="submit"> を生成
-        #'登録する' という文字がボタンに表示
+        <%#form.submit '登録する' フォームを送信するための <input type="submit"> を生成
+        #'登録する' という文字がボタンに表示 %>
         <%= form.submit '登録する' %>
     </p>
 
 <% end %>
 
 <p>
-    <%= link_to '一覧に戻る' tasks_path %>
+    <%= link_to '一覧に戻る', tasks_path %>
 </p>

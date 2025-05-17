@@ -27,7 +27,20 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
     @task = Task.find(task_params)
+    if @task.update(task_params)
+      redirect_to task_path(@task), notice: "タスクを更新しました"
+    end
+  end
+
+  def destroy
+    @task = Task.find(task_params)
+    @task.destroy
+    redirect_to task_path(@task), notice: "タスクを削除しました"
   end
 
   private
