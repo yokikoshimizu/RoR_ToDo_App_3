@@ -11,7 +11,9 @@
         <p>
             <%= link_to "詳細", task_path(task) %>
             <%= link_to "編集", edit_task_path(task) %>
-            <%= link_to "削除", task_path(task), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+            <%= form_with url: task_path(task), method: :delete, local: true do %>
+                <%= submit_tag "削除", data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
         </p>
         <hr>
     </div>

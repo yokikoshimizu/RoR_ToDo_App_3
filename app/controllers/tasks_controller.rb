@@ -18,12 +18,15 @@ class TasksController < ApplicationController
   end
 
   def create
+  @task = Task.new(task_params)
     # @task = Task.new(task_params)
     # フォームで送られてきたデータ（params[:task]）を使って、Taskモデルの新しいインスタンスを作成
     # task_params...フォームから送られるパラメータを「安全に」扱うためのRailsの標準構文
-    task = Task.new(task_params)
-    task.save!
-    redirect_to tasks_url, notice: "タスクを登録しました"
+    if @task.save
+      redirect_to tasks_url, notice: "タスクを登録しました"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -38,9 +41,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(task_params)
+    @task = Task.find(params[:id])
     @task.destroy
-    redirect_to task_path(@task), notice: "タスクを削除しました"
+    redirect_to tasks_path, notice: "タスクを削除しました"
   end
 
   private
